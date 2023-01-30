@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char input[100];
+    int current_state = 0;
+
+    printf("Enter a string: ");
+    scanf("%s", input);
+
+    for (int i = 0; i < strlen(input); i++) {
+        if (current_state == 0) {
+            if (input[i] == '0')
+                current_state = 1;
+            else
+                current_state = 2;
+        } else if (current_state == 1) {
+            if (input[i] == '1')
+                current_state = 3;
+            else
+                current_state = 2;
+        }
+    }
+
+    if (current_state == 3)
+        printf("Accepted\n");
+    else
+        printf("Not Accepted\n");
+
+    return 0;
+}
